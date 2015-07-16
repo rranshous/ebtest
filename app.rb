@@ -1,5 +1,8 @@
 require 'sinatra'
 
 get '/' do
-  'Hello world! & musicalwhimsing.info!'
+  """
+<h2>ENV</h2>
+#{ENV.to_a.join('<br>')}
+  """
 end
