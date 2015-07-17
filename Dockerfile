@@ -4,7 +4,7 @@ MAINTAINER Robby Ranshous <rranshous@gmail.com>
 ADD . /app
 RUN cd /app && bundle install
 WORKDIR /app
-EXPOSE 5000
+EXPOSE 80
 
 ENTRYPOINT ["bundle", "exec"]
-CMD ["ruby", "app.rb", "-p", "5000", "-o", "0.0.0.0"]
+CMD ["ruby", "app.rb", "-p", "80", "-o", "0.0.0.0"]
