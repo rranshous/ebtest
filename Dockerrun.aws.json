@@ -1,0 +1,26 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "ebtest-app",
+      "image": "rranshous/ebtest",
+      "essential": true,
+      "memory": 128
+    },
+    {
+      "name": "nginx-proxy",
+      "image": "rranshous/ebtestnginx",
+      "essential": true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": [
+        "ebtest-app"
+      ]
+    }
+  ]
+}
