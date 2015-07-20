@@ -10,23 +10,11 @@
   ],
   "containerDefinitions": [
     {
-      "name": "logspout",
-      "image": "rranshous/logspout-loggly",
-      "essential": false,
-      "memory": 128,
-      "mountPoints": [
-        {
-          "sourceVolume": "docker-socket",
-          "containerPath": "/tmp/docker.sock",
-          "readOnly": false
-        }
-      ]
-    },
-    {
       "name": "ebtest-app",
       "image": "rranshous/ebtest",
       "essential": true,
-      "memory": 128
+      "memory": 128,
+      "essential": true
     },
     {
       "name": "nginx-proxy",
@@ -41,6 +29,19 @@
       ],
       "links": [
         "ebtest-app"
+      ]
+    },
+    {
+      "name": "pushloggly",
+      "image": "rranshous/pushloggly",
+      "essential": false,
+      "memory": 128,
+      "mountPoints": [
+        {
+          "sourceVolume": "docker-socket",
+          "containerPath": "/var/run/docker.sock",
+          "readOnly": false
+        }
       ]
     }
   ]
